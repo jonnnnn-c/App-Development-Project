@@ -1,0 +1,275 @@
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+<style>
+
+
+    body {
+        font-family: Oswald, Helvetica, sans-serif;
+        color: #242766;
+        background-image: url("/static/staffbackground.jpg");
+    }
+
+    h1, .ordercount{
+        position: relative;
+        margin-left: 3%;
+    }
+
+    #firsttable{
+        position: relative;
+        margin-top: 2%;
+        margin-left: 3%;
+        text-align: center;
+        font-size: 20px;
+        border-collapse: collapse;
+        font-weight: bold;
+        width: 92%;
+        background-color: #FDD736;
+    }
+
+    table tr, td{
+        border: 5px solid #242766;
+        background-color: white;
+        color: #242766;
+    }
+    table th{
+        border: 5px solid #242766;
+        background-color: white;
+        color: #242766;
+    }
+
+    #inputsearch, #searchtype {
+        width: 100%;
+        color: #242766;
+    }
+
+    #search{
+        position: relative;
+        margin-top: 2%;
+        margin-left: 3%;
+        width: 50%;
+        font-size: 25px;
+        border-collapse: collapse;
+        font-weight: bold;
+        background-color: yellow;
+    }
+
+    #searcharea, #searchtype{
+        width: 100%;
+        font-size: 22px;
+    }
+
+    #secondtable{
+        position: relative;
+        margin-top: 2%;
+        margin-left: 80%;
+        width: 15%;
+        text-align: center;
+        font-size: 20px;
+        border-collapse: collapse;
+        font-weight: bold;
+    }
+
+    #searchicon{
+        position: relative;
+        margin-left:93%;
+        margin-top: -4%;
+    }
+
+    img{
+        width:80px;
+        height: 80px;
+    }
+
+    .red {
+        color: #c82333;
+    }
+
+    button {
+        text-decoration: underline;
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+    }
+
+    button:hover {
+        color: #c82333;
+    }
+
+</style>
+
+<body>
+    <h1 class="display-4">Retrieve Orders [{{name}}]</h1>
+
+    <table id="search" cellpadding="10px">
+        <tr>
+            <td style="background-color: #FDD736;">
+                SEARCH
+              <table id="searcharea" cellpadding="10px">
+               <tr>
+                <td width="100%" height="40px" style="padding:0;">
+                 <form>
+                 <select id="searchtype">
+                   <option value="1">ID</option>
+                   <option value="2">SUPPLIER</option>
+                   <option value="3">PRODUCT</option>
+                   <option value="4">STATUS</option>
+                 </select>
+                 </form>
+                </td>
+               </tr>
+               <tr>
+                <td width="100%" height="40px" style="padding:0;">
+                 <input type="text" id="inputsearch" onkeyup="searchFunction()" placeholder="&#128269;">
+                </td>
+               </tr>
+              </table>
+            </td>
+         </tr>
+    </table>
+
+    &nbsp;
+    <div class="ordercount">
+        {% if count == 0 %}
+        <p>There are no orders.</p>
+        {% elif count == 1 %}
+        <p>There is 1 order.</p>
+        {% else %}
+        <p>There are {{ count }} orders.</p>
+        {% endif %}
+    </div>
+
+
+    <hr/>
+    <div style="overflow-x:auto;">
+        <table id="firsttable" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>ORDER ID</th>
+                    <th>SUPPLIER</th>
+                    <th>PRODUCT</th>
+                    <th>QUANTITY</th>
+                    <th>CANDY PRICE</th>
+                    <th>TOTAL PRICE</th>
+                    <th>DELIVERY DATE</th>
+                    <th>STATUS</th>
+                    <th>EDIT</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for order in orderList %}
+                <tr>
+                    <td>{{ order.get_orderID() }}</td>
+                    <td>{{ order.get_companyName() }}</td>
+                    <td>{{ order.get_product() }}</td>
+                    <td>{{ order.get_productQuantity() }}</td>
+                    <td>${{ order.get_productPrice() }}</td>
+                    <td>${{ order.get_totalPrice() }}</td>
+                    <td>{{ order.get_deliveryDate() }}</td>
+
+                    {% if order.get_deliveryStatus() == "d" %}
+                    <td>Delivered</td>
+                    {% elif order.get_deliveryStatus() == "p" %}
+                        <td><span class="red">Pending</span></td>
+                    {% endif %}
+
+                    {% if order.get_deliveryStatus() == "d" %}
+                    <td></td>
+                    {% elif order.get_deliveryStatus() == "p" %}
+                    <td><a href="/s_updateorder/{{order.get_orderID()}}" class="btn btn-warning">&#9998;</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <table id="secondtable" cellpadding="10px">
+        <tbody>
+            <tr>
+                <td width="5%" style="background-color: lightgreen;">
+                    <a href="/s_menu" style="color: #242766; text-decoration:none;">BACK</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+    function searchFunction(){
+        var input, filter, table, tr, td, i, txtValue, searchtype, searchby;
+        input = document.getElementById("inputsearch");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("firsttable");
+        tr = table.getElementsByTagName("tr");
+
+        searchtype = document.getElementById("searchtype");
+        searchby = searchtype.options[searchtype.selectedIndex].value;
+
+        if (searchby == "1"){
+        for (i=0; i < tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td){
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = "";
+                  } else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+        }
+
+        if (searchby == "2"){
+          for (i=0; i < tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[1];
+              if (td){
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = "";
+                  } else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+        }
+
+        if (searchby == "3"){
+        for (i=0; i < tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[2];
+              if (td){
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = "";
+                  } else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+        }
+
+        if (searchby == "4"){
+        for (i=0; i < tr.length; i++){
+              td = tr[i].getElementsByTagName("td")[7];
+              if (td){
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1){
+                      tr[i].style.display = "";
+                  } else{
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+        }
+    }
+    </script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+ <title>Staff Website - Create Candy</title>
+
+ <style>
+ .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  h1{
+   text-align: center;
+  }
+
+  body{
+   background-image: url("/static/staffbackground.jpg");
+   font-family: oswald;
+   color: #242766;
+   }
+
+  table{
+   margin-left: 20%;
+   width: 60%;
+   border: 5px solid #242766;
+   border-collapse: collapse;
+   font-weight: bold;
+   }
+
+  td:nth-child(1){
+   text-align: center;
+   font-size: 20px;
+   width: 15%;
+   height: 5%;
+  }
+
+  td:nth-child(2){
+   width: 45%;
+   height: 5%;
+  }
+
+  table tr, td{
+    border: 5px solid #242766;
+    background-color: white;
+  }
+
+  #secondtable{
+        position: relative;
+        margin-top: 2%;
+        margin-left: 65%;
+        width: 15%;
+        text-align: center;
+        font-size: 20px;
+        border-collapse: collapse;
+        font-weight: bold;
+        height: 3%;
+        }
+
+
+ </style>
+</head>
+<body>
+ <h1 class="display-4">Create Candy</h1>
+ <form novalidate method="POST">
+  <table>
+   <tr>
+    <td>PRODUCT NAME</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.name, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td>RETAIL PRICE(S$)<br/>[2d.p]</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.retailprice, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td>COST PRICE(S$)<br/>[2d.p]</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.costprice, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td>CATEGORY</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.category, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td>DISPLAY</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.image, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td>KEY INFORMATION</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.keyinformation, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td>INGREDIENTS</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.ingredients, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+
+   <tr>
+    <td>COUNTRY OF ORIGIN</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.country, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+   <tr>
+    <td>SUPPLIER</td>
+    <td>
+     <div class="form-group">
+     {{ render_field(form.supplier, class="form-control") }}
+     </div>
+    </td>
+   </tr>
+
+  </table>
+  <table id="secondtable" cellpadding="10px">
+   <tbody>
+    <tr>
+    <td width="10%" style="background-color: skyblue;">
+       <input type="submit" value="ADD" class="btn btn-primary"/>
+    </td>
+    <td width="5%" style="background-color: lightgreen;">
+     <a href="/s_inventory" style="color: #242766; text-decoration:none;">BACK</a>
+    </td>
+    </tr>
+   </tbody>
+  </table>
+ </form>
+
+</body>
+{% endblock %}

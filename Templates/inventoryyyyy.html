@@ -1,0 +1,73 @@
+{% block content %}
+<head>
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <style>
+        body{
+            text-align: center;
+            background-image: url("/static/staffbackground.jpg");
+            font-family: oswald;
+            color: #242766;
+        }
+        table{
+            position: relative;
+            margin-top: 7%;
+            text-align: center;
+            font-size: 20px;
+            border-collapse: collapse;
+            font-weight: bold;
+            table-layout: fixed;
+        }
+        td:nth-child(1){
+            width: 5%;
+        }
+        td:nth-child(2){
+            width: 40%;
+        }
+        td:nth-child(3){
+            width: 10%;
+        }
+        td:nth-child(4){
+            width: 10%;
+        }
+        td:nth-child(5){
+            width: 15%;
+        }
+        table tr, td{
+            border: 5px solid #242766;
+            background-color: white
+        }
+
+    </style>
+
+    <script>
+    </script>
+</head>
+<body>
+    <h1>INVENTORY</h1>
+    <table align="center" id="staff_menu">
+        <tr>
+            <td>&#35;</td>
+            <td>PRODUCT NAME</td>
+            <td>TOTAL STOCK</td>
+            <td>PRICE</td>
+            <td>OPTIONS</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>STORCK WERTHER'S ORIGINAL CREAM CANDIES</td>
+            <td>100</td>
+            <td>S$3.40</td>
+            <td><--INCLUDE BUTTONS--></td>
+        </tr>
+
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a href="/createCandy" style="color: #242766; text-decoration:none;">ADD</a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+{% endblock %}

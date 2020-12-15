@@ -1,0 +1,166 @@
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Website - Create Supplier</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Oswald, Helvetica, sans-serif;
+            box-sizing: border-box;
+            background-image: url("/static/staffbackground.jpg");
+        }
+
+        hr {
+            border: 4px solid #242766;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        input[type=submit] {
+            font-size: 20px;
+            background-color: #1a5ca9;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 50px;
+            -webkit-transition: 0.5s; /* Safari prior 6.1 */
+            transition: 0.5s;
+        }
+
+        input[type=submit]:hover {
+            padding: 12px 60px;
+            background-color: #242766;
+        }
+
+        .heading {
+            font-size: 40px;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: rgba(255,255,255, 0.9);
+            padding: 40px 20px;
+            color: black;
+            font-size: 20px;
+            width: 80%;
+            height: auto;
+            margin-top: 50px;
+        }
+
+        .first_half {
+            display: inline-block;
+            min-width: 48.8%;
+        }
+
+        .second_half {
+            float: right;
+        }
+
+        .form-control{
+            width: 100%;
+            height: auto;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        label {
+            margin: 15px 0px;
+        }
+
+        .form-check {
+            padding-left: 0 !important;
+            list-style: none;
+        }
+
+        .form-check li {
+            display: inline-block;
+            text-align: left;
+            width: 30%;
+        }
+
+        .button {
+            height: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .ghost {
+            display: none;
+        }
+
+        .no-label label {
+            display: none;
+        }
+
+        .input-group .text-danger {
+            margin-top: 65px;
+            position: absolute;
+            display: block;
+        }
+
+        .m-top {
+            margin-top: 60px;
+        }
+
+        @media screen and (max-width: 700px) {
+          .first_half {
+            width: 100%;
+          }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <form novalidate method="POST" action="">  <!-- use novalidate to overwrite browser default validation -->
+    <div class="container">
+        <p class="heading"><span class="number">Create Supplier</span></p>
+        <hr>
+        <div class="form-group">
+        {{ render_field(form.companyName, class="form-control") }}
+        </div>
+
+        <p class="text-danger">{{ error1 }}</p>
+
+        <div class="form-group">
+        {{ render_field(form.companyEmail, class="form-control") }}
+        </div>
+
+        <p class="text-danger">{{ error2 }}</p>
+
+        <label>Company Phone Number</label>
+            <div class="input-group mb-2 mr-sm-2 no-label form-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">+65</div>
+                </div>
+                {{ render_field(form.companyPhone, class="form-control") }}
+            </div>
+
+        <p class="text-danger">{{ error3 }}</p>
+
+        <div class="form-group m-top">
+            <hr/>
+            {{ render_field(form.address, class="form-control") }}
+        </div>
+
+        <div class="first_half">
+        {{ render_field(form.postalCode, class="form-control") }}
+        </div>
+        &nbsp;
+        <div class="button"><input type="submit" value="Create Supplier"></div>
+    </div>
+    &nbsp;
+    </form>
+
+</body>
+{% endblock %}

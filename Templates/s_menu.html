@@ -1,0 +1,191 @@
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+        <title>Staff Website - Menu</title>
+
+        <style>
+            body {
+                text-align: center;
+                background-image: url("/static/staffbackground.jpg");
+                font-family: oswald;
+            }
+
+            #accordion {
+                width: 60%;
+                margin-left: 20%;
+                margin-top: -20px;
+                border: 5px solid #242766;
+            }
+
+            a {
+                color: #242766;
+                font-size: 35px;
+            }
+
+            a:hover {
+                color: #242766;
+                text-decoration: none;
+            }
+
+            .dropdownlayout, .dropdownlayout2 {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdownlayout td {
+                width: 50%;
+                border: 2px solid #242766;
+            }
+
+            .dropdownlayout2 td {
+                width: 33%;
+                border: 2px solid #242766;
+            }
+
+            .card-header {
+                transition: 0.5s ;
+                -webkit-transition:0.5s;
+            }
+        </style>
+    </head>
+
+    <body><br><br><br><br>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="color: #242766; font-size: 35px; text-decoration: none;">
+                            Candy
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <table align="center" class="dropdownlayout">
+                            <tr>
+                                <td>
+                                    <a href="/createCandy">Create Candy</a>
+                                </td>
+                                <td>
+                                    <a href="/s_inventory">Inventory</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button style="text-decoration: none;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a href="/s_deliveryorders">Delivery Orders</a>
+                        </button>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #242766; font-size: 35px; text-decoration: none;">
+                            Suppliers
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        <table align="center" class="dropdownlayout2">
+                            <tr>
+                                <td>
+                                    <a href="/s_createsupplier">Create Supplier</a>
+                                </td>
+                                <td>
+                                    <a href="/s_retrievesupplier">Retrieve Suppliers</a>
+                                </td>
+                                <td>
+                                    <a href="/s_retrieveorder">View Orders</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #242766; font-size: 35px; text-decoration: none;">
+                            Customer Membership
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+                        <table align="center" class="dropdownlayout">
+                            <tr>
+                                <td>
+                                    <a href="/s_create_membership">Create Customer</a>
+                                </td>
+                                <td>
+                                    <a href="/s_membershiplist">Retrieve Members</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <h5 class="mb-0">
+                        <button style="text-decoration: none;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <a href="/retrieve_feedback">Feedback</a>
+                        </button>
+                    </h5>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingSix">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="color: #242766; font-size: 35px; text-decoration: none;">
+                            Staff
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                    <div class="card-body">
+                        <table align="center" class="dropdownlayout">
+                            <tr>
+                                <td>
+                                    <a href="/create_staff">Create Staff</a>
+                                </td>
+                                <td>
+                                    <a href="/s_stafflist">Retrieve Staff</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingSeven">
+                    <h5 class="mb-0">
+                        <button style="text-decoration: none;" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            <a href="/dropsession">Log Out</a>
+                        </button>
+                    </h5>
+                </div>
+            </div>
+        </div><br><br><br><br>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html"%}
+{% block title %}Candy Shop - SPECIALS{% endblock %}
+
+{% block content %}
+
+<style>
+    .checked {
+      color: #50c5b7;
+    }
+
+    .card {
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+    }
+
+    table{
+        margin-left: 7%;
+        text-align: center;
+    }
+
+    .card-img-top{
+        height: 270px;
+        width: auto;
+
+    }
+
+    h1{
+        color: #222a68;
+        font-family: Haettenschweiler;
+        margin-left: 30px;
+        font-size: 70px;
+    }
+
+    .card-body{
+        border: 4px solid #222a68;
+    }
+</style>
+
+<h1 style="text-align: center;">SPECIALS</h1>
+<br>
+<table>
+    <tr>
+    {% for candyInnerList in candyList %}
+        {% for candy in candyInnerList %}
+    <td>
+        <table cellpadding="5px">
+        <tr>
+            <td style="padding: 15px"><img class="card-img-top" src="/static/{{ candy.get_candyImage() }}" alt="Card image"></td>
+        </tr>
+
+
+        <tr>
+            <td>{{ candy.get_candyName() }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ "%.2f"|format(candy.get_candyRetailPrice()) }}</td>
+        </tr>
+
+        <tr>
+            <td>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <form action="{{url_for('candy_description', id=candy.get_candyID())}}" method="POST">
+                    <input type="submit" value="View" class="btn btn-primary">
+                </form>
+            </td>
+        </tr>
+        </table>
+    </td>
+
+    {% endfor %}
+    </tr><tr>
+
+    {% endfor %}
+    </tr>
+
+</table>
+
+{% endblock %}

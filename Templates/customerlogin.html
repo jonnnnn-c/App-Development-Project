@@ -1,0 +1,87 @@
+{% extends "base.html"%}
+{% block title %}Candy Shop - Login{% endblock %}
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <style>
+        body{
+            text-align: center;
+            background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png");
+            font-family: oswald;
+            color: #242766;
+        }
+        table{
+            position: relative;
+            margin-top: 7%;
+            width: 60%;
+            text-align: center;
+            font-size: 30px;
+            border-collapse: collapse;
+            font-weight: bold;
+        }
+        table tr, td{
+            padding: 1%;
+            border: 5px solid #242766;
+            background-color: white
+        }
+
+        #secondtable{
+        position:relative;
+        margin-top: 1%;
+        margin-left:70%;
+        width:10%;
+        font-size: 25px;
+        }
+
+        #secondtable tr,td{
+        border: 0px solid white;
+        background: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+ <form method="POST" action="">
+    <table align="center" id="customer-login">
+        <tr>
+            <td width="30%">USERNAME</td>
+            <td>
+                <div class="form-group">
+                 {{ render_field(form.username, class="form-control") }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+            <td>
+                <div class="form-group">
+                 {{ render_field(form.password, class="form-control") }}
+                </div>
+                <a href="#" style="color: #242766; text-decoration:none;font-size:15px;">Forget Password?</a>
+            </td>
+        </tr>
+    </table>
+
+    <table id="secondtable" cellpadding="10px">
+     <tbody>
+      <tr>
+
+      <form method="POST">
+          <td><button class="btn btn-success" onclick="/create_membership/document.getElementById('id01').style.display='block'" style="width:auto;"><a href="/create_membership" style="color: white;">SIGN UP</a></button></td>
+          <td><input type="submit" value="LOG-IN" class="btn btn-primary" style="width: 100%;"></td>
+      </form>
+      </tr>
+
+     </tbody>
+    </table>
+ </form>
+
+</body>
+
+{% endblock %}

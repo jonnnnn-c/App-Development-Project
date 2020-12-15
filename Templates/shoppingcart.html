@@ -1,0 +1,142 @@
+{% extends "base.html"%}
+{% block title %}Candy Shop - Shopping Cart{% endblock %}
+{% block content %}
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <style>
+            body {
+                font-family: Oswald, Helvetica, sans-serif;
+                box-sizing: border-box;
+                background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png")
+            }
+
+            .heading {
+                font-size: 40px;
+            }
+
+            input[type=submit], .side_button {
+                font-size: 20px;
+                background-color: #1a5ca9;
+                color: white;
+                padding: 12px 40px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 50px;
+                -webkit-transition: 0.5s; /* Safari prior 6.1 */
+                transition: 0.5s;
+            }
+
+            input[type=submit]:hover, .side_button:hover {
+                padding: 12px 60px;
+                background-color: #242766;
+            }
+
+            .links:hover {
+                color: white;
+                text-decoration: none;
+            }
+
+            .left_thing {
+                margin-left: 130px;
+            }
+
+            input[type=submit] {
+                float: right;
+                margin-right: 130px;
+            }
+
+            .table_2 {
+                width: 80%;
+                height: auto;
+                border-collapse: collapse;
+                font-size: 20px;
+                background-color: rgba(255,255,255, 0.9);
+                margin: 0 auto;
+                margin-top: 2%;
+            }
+
+            .table_2 tr {
+                border-bottom: 1px solid #ddd;
+            }
+
+            .center {
+                width: 10%;
+                text-align: center;"
+            }
+
+            .grey {
+                background-color: #cecece;
+                height: 28px;
+            }
+
+            .w3-teal {
+                background-color: #1a5ca9 !important;
+            }
+
+            .tot_price {
+                margin-left: 1100px;
+                font-size: 22px;
+            }
+
+            .cartImage {
+                width: 100px;
+                height: auto;
+            }
+        </style>
+    </head>
+
+    <body><br><br>
+        <p class="heading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOPPING CART</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible" role="alert" id="alert" style="width: 80%; margin: 0 auto; text-align: center;">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <table class="table_2" cellpadding="5px" id="myTable">
+                <tr class="grey">
+                    <th>Display</th>
+                    <th>Product Name</th>
+                    <th width="10%">Price ($)</th>
+                    <th width="10%">Quantity</th>
+                    <th width="10%">Subtotal ($)</th>
+                </tr>
+
+                {% for candy in cartList %}
+                    <tr>
+                        <td><img src="/static/{{ candy.get_candyImage() }}" class="cartImage"></td>
+                        <td>{{ candy.get_candyName() }}</td>
+                        <td>{{ candy.get_candyRetailPrice() }}</td>
+                        <td>{{ candy.get_quantity() }}</td>
+                        <td>{{ candy.get_subtotal() }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </form><br><br>
+
+        <div class="tot_price">
+            <strong>Total</strong>
+            ${{ total }}
+        </div><br><br>
+
+
+        <form action="/checkout" method="" onsubmit="sessionStorage.clear();">
+            <input type="submit" value="Place Order">
+        </form>
+
+        <button class="left_thing side_button" type="button"><a href="/" class="links">Continue Shopping</a></button><br>
+        <button class="left_thing side_button" type="button"><a href="/emptycart" class="links">Clear Cart</a></button><br><br><br>
+    </body>
+{% endblock %}

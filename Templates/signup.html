@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block title %}Candy Shop - Member Sign Up{% endblock %}
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+
+ <style>
+ .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  h1{
+   text-align: center;
+  }
+
+  body{
+   background-image: url("/static/staffbackground.jpg");
+   font-family: oswald;
+   color: #242766;
+   }
+ * {box-sizing: border-box}
+  /* Full-width input fields */
+    .form-group {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    font-family: Oswald, Helvetica, sans-serif;
+  }
+
+  /* Add a background color when the inputs get focus */
+  .form-group:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+
+
+  button:hover {
+    opacity:1;
+  }
+
+
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .signupbtn {
+    float: left;
+    width: 50%;
+  }
+
+  /* Add padding to container elements */
+  .container {
+    padding: 16px;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+    color: #242766;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 4px solid #242766;
+    width: 60%; /* Could be more or less, depending on screen size */
+    font-family: Oswald, Helvetica, sans-serif;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  /* Style the horizontal ruler */
+  hr {
+    border: 2px solid #242766;
+    margin-bottom: 25px;
+  }
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+      width: 100%;
+    }
+  }
+  .modal{
+    background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png");
+  }
+  input[type=text], select, .form-control{
+    border: 2px solid #242766;
+  }
+  #secondtable{
+    position: relative;
+    width: 15%;
+    text-align: center;
+    font-size: 16px;
+    border-collapse: collapse;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-left: 80%;
+  }
+ </style>
+</head>
+<body onload="document.getElementById('id01').style.display='block'">
+<div id="id01" class="modal">
+  <span onclick="window.location.href='/customerlogin'" class="close" title="Close Modal">&times;</span>
+ <form method="POST" action="" class="modal-content">
+   <div class="container">
+     <h1 class="display-4">SIGN UP</h1>
+     <hr>
+     <div>
+       <label>FIRST NAME</label>
+       <div class="form-group">{{ render_field(form.firstname, class="form-control") }}</div>
+     </div>
+     <div>
+       <label>LAST NAME</label>
+       <div class="form-group">{{ render_field(form.lastname, class="form-control") }}</div>
+     </div>
+     <div>
+       <label>GENDER</label>
+       <div class="form-group">{{ render_field(form.gender, class="form-control") }}</div>
+     </div>
+     <div>
+       <label>EMAIL</label>
+       <div class="form-group">{{ render_field(form.email, class="form-control") }}</div>
+     </div>
+     <div>
+       <label>PASSWORD</label>
+       <div class="form-group">{{ render_field(form.password, class="form-control") }}</div>
+     </div>
+     <div>
+       <label>CONTACT NUMBER</label>
+       <div class="form-group">{{ render_field(form.contactNo, class="form-control") }}</div>
+     </div>
+     <table id="secondtable" cellpadding="10px">
+       <tbody>
+        <tr>
+        <td width="15%">
+         <button type="submit" class="signupbtn btn btn-primary" style="width: 138%; background-color: #242766; color: white;">Sign Up</button>
+        </td>
+        <td width="5%">
+            <button type="button" class="cancelbtn btn btn-danger" style="width: 100%;" onclick="window.location.href='/login'">Cancel</button>
+        </td>
+        </tr>
+       </tbody>
+      </table>
+   </div>
+   </form>
+</div>
+<script>
+  //Get the modal
+  var modal = document.getElementById('id01');
+  //When user clicks anywhere outside of the modal, close it
+  window.onclick = function(event){
+    if (event.target == modal){
+      modal.style.display = "none";
+      window.location.href = "/customerlogin";
+    }
+  }
+</script>
+</body>
+{% endblock %}

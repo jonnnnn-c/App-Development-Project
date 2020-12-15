@@ -1,0 +1,89 @@
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <title>Staff Website - Login</title>
+
+    <style>
+        body{
+            text-align: center;
+            background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png");
+            font-family: oswald;
+            color: #242766;
+        }
+          h1{
+           text-align: center;
+           position: relative;
+           margin-top: 50px;
+           font-weight: bold;
+          }
+        table{
+            width: 60%;
+            text-align: center;
+            font-size: 30px;
+            border-collapse: collapse;
+            font-weight: bold;
+        }
+        table tr, td{
+            padding: 1%;
+            border: 5px solid #242766;
+            background-color: white
+        }
+
+
+        #login{
+            width: 70px;
+        }
+
+    </style>
+
+    <script>
+    </script>
+</head>
+<body>
+<h1>LOGIN PAGE</h1>
+ <form method="POST" action="">
+    <table align="center" id="staff_login">
+        <tr>
+            <td width="30%">USER ID</td>
+            <td>
+                <div class="form-group">
+                 {{ render_field(form.id, class="form-control") }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+            <td>
+                <div class="form-group">
+                 {{ render_field(form.password, class="form-control") }}
+                </div>
+            </td>
+        </tr>
+    </table>
+
+     {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div style="margin-top: 15px;">
+                <div class="alert alert-warning alert-dismissible" role="alert" id="alert" style="width: 60%; margin: 0 auto; text-align: center;">
+                    {{message}}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<br>
+
+      <form method="POST">
+        <button style="width:auto;" type="button" class="cancelbtn btn btn-success" style="width: 100%;" onclick="window.location.href='/create_membership'">SIGN UP</button>
+
+          <input id="login" type="submit" value="LOG-IN" class="btn btn-primary">
+          <button style="width:auto;" type="button" class="cancelbtn btn btn-danger" style="width: 100%;" onclick="window.location.href='/'">EXIT</button>
+        </form>
+ </form>
+</body>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html"%}
+{% block title %}Candy Shop - Gummy{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png");
+    }
+
+    .checked {
+      color: #50c5b7;
+    }
+
+    .card {
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+    }
+
+    table{
+        margin: auto;
+        text-align: center;
+    }
+
+    .card-img-top{
+        height: 270px;
+        width: auto;
+
+    }
+
+    h1{
+        color: #222a68;
+        font-family: Haettenschweiler;
+        margin-left: 30px;
+        font-size: 70px;
+    }
+
+    .card-body{
+        border: 4px solid #222a68;
+    }
+</style>
+
+<h1 style="text-align: center;">GUMMY</h1>
+<br>
+<table>
+    <tr>
+    {% for candyInnerList in candyList %}
+        {% for candy in candyInnerList %}
+    <td>
+        <table cellpadding="5px">
+        <tr>
+            <td style="padding: 15px"><img class="card-img-top" src="/static/{{ candy.get_candyImage() }}" alt="Card image"></td>
+        </tr>
+        <tr>
+            <td>{{ candy.get_candyName() }}</td>
+        </tr>
+        <tr>
+            <td>{{ candy.get_candyRetailPrice() }}</td>
+        </tr>
+        <tr>
+            <td>
+                <form action="{{url_for('candy_description', id=candy.get_candyID())}}" method="POST">
+                    <input type="submit" value="Add to Cart" class="btn btn-primary">
+                </form>
+            </td>
+        </tr>
+        </table>
+    </td>
+
+    {% endfor %}
+    </tr><tr>
+
+    {% endfor %}
+    </tr>
+
+</table>
+
+{% endblock %}

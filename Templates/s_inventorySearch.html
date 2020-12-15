@@ -1,0 +1,74 @@
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+<head>
+<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url("/static/staffbackground.jpg");
+            font-family: oswald;
+            color: #242766;
+        }
+
+        table tr, td{
+            border: 5px solid #242766;
+            background-color: white;
+            color: #242766;
+        }
+        table th{
+            border: 5px solid #242766;
+            background-color: white;
+            color: #242766;
+        }
+
+        #search{
+         position: relative;
+         margin-top: 2%;
+         margin-left: 5%;
+         width: 50%;
+         font-size: 20px;
+         border-collapse: collapse;
+         font-weight: bold;
+         background-color: yellow;
+        }
+
+        #searcharea{
+        width: 100%;
+        }
+
+
+    </style>
+
+    <script>
+    </script>
+</head>
+<body>
+<h1 class="display-4">Inventory</h1>
+<table id="search" cellpadding="10px">
+    <tr>
+        <td style="background-color: #FDD736;">
+            SEARCH
+
+        <form method="POST" action="">
+
+          <table id="searcharea" cellpadding="10px">
+           <tr>
+            <td>
+             <div class="form-group">
+             {{ render_field(form.namesearch, class="form-control") }}
+             </div>
+            </td>
+            <td>
+                <input type="submit" value="SEARCH" class="btn btn-primary"/>
+            </td>
+           </tr>
+          </table>
+
+        </form>
+
+        </td>
+     </tr>
+
+</table>
+</body>
+{% endblock %}

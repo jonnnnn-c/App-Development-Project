@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}Storck Werther's Original Cream Candies{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap">
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family: oswald;
+        color: #242766;
+        background-image: url("https://i.pinimg.com/originals/be/52/ca/be52ca4a9ebbd5a4d4a97730c4bfb9a6.png")
+    }
+
+    hr {
+        border: 4px solid #242766;
+        margin: 0px;
+    }
+
+    .productdescriptionimage {
+        width: 400px;
+        height: auto;
+        padding: 0;
+    }
+
+    .productname {
+        font-size: 35px;
+    }
+
+    .productprice {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .productinfo {
+        font-size: 20px;
+    }
+
+    .productquantity {
+        width: 55px;
+        height: 30px;
+        text-align: center;
+        font-size: 16px;
+        color: #242766;
+    }
+
+    .productdetails {
+        background-color: #FAD8D6;
+        font-size: 16px;
+        bottom: 0;
+        width: 100%;
+        margin-top: 100px;
+        height: auto;
+    }
+
+    strong {
+        font-size: 19px;
+    }
+
+    .addtocartbutton {
+        height: 50px;
+        width: 200px;
+        font-size: 20px;
+        font-weight: bold;
+        border: 3px solid white;
+        background-color: #1a5ca9;
+        border-radius: 50px;
+        color: white;
+        cursor: pointer;
+        font-family: oswald;
+        -webkit-transition: 0.5s; /* Safari prior 6.1 */
+        transition: 0.5s;
+    }
+
+    .addtocartbutton:hover {
+        width: 240px;
+        background-color: #242766;
+    }
+
+</style>
+<script>
+    function addItem() {
+        var added = alert("Item added to cart!");
+    }
+</script>
+
+<!--Content here-->
+<div><br><br><br><br><br>
+    <table cellspacing="70px" width="80%" align="center">
+        <tr>
+            <td rowspan="6"><img src="{{url_for('static', filename='werthers.png')}}" class="productdescriptionimage"></td>
+            <td colspan="3" class="productname">Storck Werther's Original Cream Candies</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="productprice">$3.40<hr size="3" color="black"></td>
+        </tr>
+        <tr>
+            <td align="center" class="productinfo">Pack Size: 150g</td>&nbsp;&nbsp;&nbsp;
+            <td align="center" class="productinfo">
+                Quantity:
+                <input type="number" name="quantity" min="1" max="99" class="productquantity" value="1">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <button class="addtocartbutton" onclick="addItem()">Add to Cart</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--Product details-->
+<div class="productdetails">
+    <hr/>
+    <table cellpadding="30px" width="80%" align="center">
+        <tr>
+            <td width="50%">
+                <strong>Key Information</strong><br><br>
+                Deliciously smooth milk chocolates, marbled with the comforting taste of Werther's, they are made with the same care and expertise used to create all Werther's Original confections. Werther's Original - What Comfort Tastes Like
+            </td>
+            <td valign="top">
+                <strong>Country of Origin</strong><br><br>
+                Germany
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
