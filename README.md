@@ -1,7 +1,7 @@
 # App-Development-Project
 This was a group project where my team and I designed and developed webpages using HTML, CSS, Bootstrap, Flask, and WTForms for a Candy Shop.
 
-<br>
+<br/>
 ## Members:
 - Jingling
 - Jonathan
@@ -9,13 +9,13 @@ This was a group project where my team and I designed and developed webpages usi
 - Laraine
 - Owen
 
-<br>
+<br/>
 ## Requirements
 > pip install Flask <br>
 > pip install Flask-Mail <br>
 > pip install WTForms <br>
 
-<br>
+<br/>
 ## Contents of Web Application
 - Customer Pages
   - Homepage
@@ -34,6 +34,6 @@ This was a group project where my team and I designed and developed webpages usi
   - Feedback
   - View Staff
 
-<br>
+<br/>
 ## Task Allocation:
 
