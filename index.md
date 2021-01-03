@@ -39,7 +39,3 @@
   - View Staff
 
 &nbsp;
-## Task Allocation:
-
-
-&nbsp;
