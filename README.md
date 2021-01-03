@@ -35,7 +35,3 @@ This is a group project where the team designed and developed webpages using HTM
   - View Staff
 
 &nbsp;
-## Task Allocation:
-
-
-&nbsp;
